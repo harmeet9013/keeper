@@ -1,39 +1,24 @@
 import "./components.css";
-import { useRef } from "react";
+import NoteJS from "./notes";
 import CreateNote from "./CreateNote";
 
-function Call_CreateNote(NoteTitle, NoteContent) {
-    return <CreateNote Title={NoteTitle} Content={NoteContent} />;
-}
-
 function Note() {
-    let NoteTitle = useRef(null);
-    let NoteContent = useRef(null);
+    // return NoteJS.map((inputs) => (
+    //     <CreateNote Title={inputs.title} Content={inputs.content} />
+    // ));
+
+    const [inputText, setInputText] = useState("");
     return (
-        <div className="Note">
-            <input
-                ref={NoteTitle}
-                placeholder="Note Title."
-                id="NoteTitle"
-                className="TitleField"
-            />
-            <input
-                ref={NoteContent}
-                placeholder="Note Content."
-                id="NoteContent"
-                className="ContentField"
-            />
-            <button
-                onClick={() =>
-                    Call_CreateNote(
-                        NoteTitle.current.value,
-                        NoteContent.current.value
-                    )
-                }
-            >
-                {" "}
-                Create Note{" "}
-            </button>
+        <div>
+            <label>Note Title
+                <input
+                    type="text"
+                    onChange={handleChange}
+                    value={inputText}
+                    className=".TitleField"
+                />
+            </label>
+            <p>Your input: {inputText}</p>
         </div>
     );
 }
