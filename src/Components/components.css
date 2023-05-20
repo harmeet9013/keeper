@@ -29,7 +29,7 @@
 .Note {
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: inline-block;
+    display: inline-table;
     margin: 30px;
     padding-top: 10px;
     padding: 0px 10px;
