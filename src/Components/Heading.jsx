@@ -2,10 +2,9 @@ import "./components.css";
 
 function Heading() {
     return (
-        <div>
-            <h1 className="Heading">
-                Keeper
-            </h1>
+        <div className="Heading">
+            <h1>Keeper</h1>
+            <p>Created by Harmeet Singh</p>
         </div>
     );
 }

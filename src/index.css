@@ -1,6 +1,7 @@
 body {
-  background-color: rgb(240, 240, 240);
+  background-color: #fffcef;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   padding: 0px;
+  text-align: center;
 }

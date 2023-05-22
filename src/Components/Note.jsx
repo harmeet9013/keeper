@@ -1,27 +1,17 @@
 import "./components.css";
-import React from "react";
-import NoteJS from "./notes";
+import React, { useState } from "react";
 import CreateNote from "./CreateNote";
+import PrintNotes from "./PrintNotes";
 
 function Note() {
-    return NoteJS.map((inputs) => (
-        <CreateNote Title={inputs.title} Content={inputs.content} />
-    ));
-
-    // const [inputText, setInputText] = useState("");
-    // return (
-    //     <div>
-    //         <label>Note Title
-    //             <input
-    //                 type="text"
-    //                 onChange={handleChange}
-    //                 value={inputText}
-    //                 className=".TitleField"
-    //             />
-    //         </label>
-    //         <p>Your input: {inputText}</p>
-    //     </div>
-    // );
+    const [NoteList, updateNoteList] = useState([]);
+    console.log(NoteList);
+    return (
+        <div className="container">
+            <CreateNote NoteList={NoteList} updateNoteList={updateNoteList} />
+            <PrintNotes NoteList={NoteList} />
+        </div>
+    );
 }
 
 export default Note;

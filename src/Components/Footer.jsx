@@ -4,9 +4,7 @@ function Footer() {
     let CURRENTYEAR = new Date().getFullYear();
     return (
         <footer>
-            <p className="Footer">
-                Copyright &#169; {CURRENTYEAR}
-            </p>
+            <p className="Footer">Copyright &#169; {CURRENTYEAR}</p>
         </footer>
     );
 }
