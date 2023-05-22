@@ -69,7 +69,8 @@
 
 .CreateNote {
     background-color: #191b29;
-    width: 600px;
+    width: 370px;
+    max-width: 500px;
     display: inline-block;
     border-radius: 20px;
     margin-top: -100px;
@@ -78,6 +79,17 @@
     height: 370px;
     transition: all 200ms ease-in-out;
     margin-bottom: 100px;
+    
+    /* background-color: #191b29;
+    width: 600px;
+    display: inline-block;
+    border-radius: 20px;
+    margin-top: -100px;
+    position: sticky;
+    text-align: center;
+    height: 370px;
+    transition: all 200ms ease-in-out;
+    margin-bottom: 100px; */
 }
 
 .CreateNote > input,
@@ -88,7 +100,7 @@
     border: none;
     outline: none;
     transition: all 200ms ease-in-out;
-    width: 300px;
+    width: 55%;
     background-color: #EAEAEA;
     padding: 10px;
     margin: 20px;
@@ -119,8 +131,8 @@
     font-size: 40px;
     padding: 10px 30px;
     transform: scale(1);
-    border-radius: 20%;
-    margin-right: -450px;
+    border-radius: 30%;
+    margin-right: -60%;
     margin-top: 14px;
 }
 
