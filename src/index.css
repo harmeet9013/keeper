@@ -1,7 +1,11 @@
 body {
-  background-color: #fffcef;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
-  padding: 0px;
-  text-align: center;
+    background-color: #fffcef;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+html * {
+    transition: all 400ms ease-in-out;
 }

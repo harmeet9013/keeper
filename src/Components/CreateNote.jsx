@@ -1,7 +1,8 @@
 import "./components.css";
 import { useState } from "react";
+import { noteCount } from "..";
 
-function CreateNote({ NoteList, updateNoteList }) {
+function CreateNote({ NoteList, updateNoteList, setFirstLaunch }) {
     const [newNote, createNewNote] = useState({
         Title: "",
         Content: "",
@@ -15,6 +16,7 @@ function CreateNote({ NoteList, updateNoteList }) {
     function handleClick() {
         if (newNote.Title !== "" && newNote.Content !== "") {
             updateNoteList([...NoteList, newNote]);
+            setFirstLaunch(false);
         } else {
             alert("Please enter some text in both fields.");
         }
@@ -25,19 +27,19 @@ function CreateNote({ NoteList, updateNoteList }) {
             <h1 style={{ color: "rgba(255,255,255,0.8)" }}>
                 Create a New Note
             </h1>
+            <p>Note Title</p>
             <input
                 type="text"
                 name="Title"
-                placeholder="Note Title"
                 value={newNote.Title}
                 onChange={handleChange}
             />
+            <p style={{marginBottom: "5px"}}>Note Content</p>
             <textarea
                 style={{ resize: "none", height: "100px" }}
                 className="NoteContent"
                 type="text"
                 name="Content"
-                placeholder="Note Content"
                 value={newNote.content}
                 onChange={handleChange}
             />

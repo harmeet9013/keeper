@@ -3,15 +3,22 @@ import React, { useState } from "react";
 import CreateNote from "./CreateNote";
 import PrintNotes from "./PrintNotes";
 
-function Note() {
+export default function Note() {
     const [NoteList, updateNoteList] = useState([]);
-    console.log(NoteList);
+    const [firstLaunch, setFirstLaunch] = useState(true);
     return (
         <div className="container">
-            <CreateNote NoteList={NoteList} updateNoteList={updateNoteList} />
-            <PrintNotes NoteList={NoteList} />
+            <CreateNote
+                NoteList={NoteList}
+                updateNoteList={updateNoteList}
+                firstLaunch={firstLaunch}
+                setFirstLaunch={setFirstLaunch}
+            />
+            <PrintNotes
+                NoteList={NoteList}
+                firstLaunch={firstLaunch}
+                updateNoteList={updateNoteList}
+            />
         </div>
     );
 }
-
-export default Note;
