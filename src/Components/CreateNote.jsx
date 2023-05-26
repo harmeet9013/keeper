@@ -36,40 +36,39 @@ export default function CreateNote({
                 label="Note Title"
                 variant="filled"
                 sx={{
+                    color: "black",
+                    backgroundColor: "white",
+                    borderRadius: "10px",
+                    width: "350px",
                     input: {
-                        color: "black",
-                        backgroundColor: "white",
                         letterSpacing: "2px",
                         fontWeight: "600",
-                        width: "350px",
-                        borderRadius: "10px",
-                    },
-                    hover: {
-                        borderRadius: "10px",
                     },
                 }}
                 margin="dense"
                 type="text"
                 name="Title"
+                placeholder="An interesting title"
                 value={newNote.Title}
                 onChange={handleChange}
             />
             <TextField
                 label="Note Content"
                 variant="filled"
-                multiline="true"
-                rows={5}
                 margin="normal"
+                multiline="true"
+                rows={4}
                 sx={{
-                    input: {
-                        color: "black",
-                        backgroundColor: "white",
-                        letterSpacing: "2px",
-                        fontWeight: "600",
-                    },
+                    color: "black",
+                    backgroundColor: "white",
+                    letterSpacing: "1px",
+                    fontWeight: "500",
+                    width: "350px",
+                    borderRadius: "10px",
                 }}
                 type="text"
                 name="Content"
+                placeholder="Don't write I got your back jack."
                 value={newNote.content}
                 onChange={handleChange}
             />
