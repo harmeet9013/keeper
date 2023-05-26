@@ -38,7 +38,7 @@ function PrintNotes({ NoteList, firstLaunch, updateNoteList }) {
                                 DeleteNotes(index);
                             }}
                         >
-                            <DeleteIcon color="inherit" />
+                            <DeleteIcon style={{color: "rgb(40,40,40)"}} />
                         </IconButton>
                     </div>
                 </div>

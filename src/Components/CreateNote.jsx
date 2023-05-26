@@ -1,7 +1,13 @@
 import "./components.css";
 import { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import TextField from "@mui/material/TextField";
 
-function CreateNote({ NoteList, updateNoteList, setFirstLaunch }) {
+export default function CreateNote({
+    NoteList,
+    updateNoteList,
+    setFirstLaunch,
+}) {
     const [newNote, createNewNote] = useState({
         Title: "",
         Content: "",
@@ -26,26 +32,51 @@ function CreateNote({ NoteList, updateNoteList, setFirstLaunch }) {
             <h1 style={{ color: "rgba(255,255,255,0.8)" }}>
                 Create a New Note
             </h1>
-            <p>Note Title</p>
-            <input
+            <TextField
+                label="Note Title"
+                variant="filled"
+                sx={{
+                    input: {
+                        color: "black",
+                        backgroundColor: "white",
+                        letterSpacing: "2px",
+                        fontWeight: "600",
+                        width: "350px",
+                        borderRadius: "10px",
+                    },
+                    hover: {
+                        borderRadius: "10px",
+                    },
+                }}
+                margin="dense"
                 type="text"
                 name="Title"
                 value={newNote.Title}
                 onChange={handleChange}
             />
-            <p style={{ marginBottom: "5px" }}>Note Content</p>
-            <textarea
-                style={{ resize: "none", height: "100px" }}
-                className="NoteContent"
+            <TextField
+                label="Note Content"
+                variant="filled"
+                multiline="true"
+                rows={5}
+                margin="normal"
+                sx={{
+                    input: {
+                        color: "black",
+                        backgroundColor: "white",
+                        letterSpacing: "2px",
+                        fontWeight: "600",
+                    },
+                }}
                 type="text"
                 name="Content"
                 value={newNote.content}
                 onChange={handleChange}
             />
             <br />
-            <button onClick={handleClick}>+</button>
+            <button onClick={handleClick}>
+                <AddIcon />
+            </button>
         </div>
     );
 }
-
-export default CreateNote;

@@ -44,33 +44,31 @@
 
 .CreateNote {
     background-color: #191b29;
-    width: 370px;
+    width: 100%;
     max-width: 500px;
     display: inline-block;
     border-radius: 20px;
     margin-top: -100px;
     position: sticky;
     text-align: center;
-    height: 420px;
+    height: 100%;
     transition: all 200ms ease-in-out;
     margin-bottom: 100px;
 }
 
-.CreateNote > input,
-.CreateNote > textarea {
-    transform: scale(1.3);
+.CreateNote > .newNote {
     text-align: left;
-    border-radius: 5px;
-    border: none;
-    outline: none;
+    border-radius: 10px;
     transition: all 200ms ease-in-out;
-    width: 55%;
     background-color: #eaeaea;
-    padding: 10px;
     margin: 20px;
     font-weight: 500;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: black;
+    color: inherit;
+}
+
+.CreateNote > .newNote:focus {
+    border-radius: 10px;
 }
 
 .CreateNote > p {
@@ -85,27 +83,20 @@
     font-size: 13px;
 }
 
-.CreateNote > input:focus,
-.CreateNote > textarea:focus {
-    transform: scale(1.35);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-
 .CreateNote > button {
     transition: all 200ms ease-in-out;
     background-color: #95b9ee;
     border: none;
-    font-size: 40px;
-    padding: 10px 30px;
+    padding: 20px 20px;
     transform: scale(1);
     border-radius: 30%;
     margin-right: -60%;
-    margin-top: 14px;
+    margin-bottom: -40px;
 }
 
 .CreateNote > button:hover {
-    border-radius: 20%;
-    transform: scale(1.2);
+    border-radius: 25%;
+    transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
