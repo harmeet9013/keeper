@@ -1,6 +1,5 @@
 import "./components.css";
 import { useState } from "react";
-import { noteCount } from "..";
 
 function CreateNote({ NoteList, updateNoteList, setFirstLaunch }) {
     const [newNote, createNewNote] = useState({
@@ -34,7 +33,7 @@ function CreateNote({ NoteList, updateNoteList, setFirstLaunch }) {
                 value={newNote.Title}
                 onChange={handleChange}
             />
-            <p style={{marginBottom: "5px"}}>Note Content</p>
+            <p style={{ marginBottom: "5px" }}>Note Content</p>
             <textarea
                 style={{ resize: "none", height: "100px" }}
                 className="NoteContent"
