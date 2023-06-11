@@ -4,7 +4,7 @@ import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-function PrintNotes({ NoteList, firstLaunch, updateNoteList }) {
+function PrintNotes({ NoteList, firstLaunch, setFirstLaunch, updateNoteList }) {
     const [deletedNoteIndex, setDeletedNoteIndex] = useState(null);
 
     function DeleteNotes(key) {
@@ -16,6 +16,9 @@ function PrintNotes({ NoteList, firstLaunch, updateNoteList }) {
                 });
             });
             setDeletedNoteIndex(null);
+            if (NoteList.length < 2) {
+                setFirstLaunch(true);
+            }
         }, 200);
     }
 
@@ -38,7 +41,7 @@ function PrintNotes({ NoteList, firstLaunch, updateNoteList }) {
                                 DeleteNotes(index);
                             }}
                         >
-                            <DeleteIcon style={{color: "rgb(40,40,40)"}} />
+                            <DeleteIcon style={{ color: "rgb(40,40,40)" }} />
                         </IconButton>
                     </div>
                 </div>

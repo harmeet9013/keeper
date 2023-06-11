@@ -17,6 +17,7 @@ export default function Note() {
             <PrintNotes
                 NoteList={NoteList}
                 firstLaunch={firstLaunch}
+                setFirstLaunch={setFirstLaunch}
                 updateNoteList={updateNoteList}
             />
         </div>

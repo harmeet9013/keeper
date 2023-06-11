@@ -56,7 +56,7 @@ export default function CreateNote({
                 label="Note Content"
                 variant="filled"
                 margin="normal"
-                multiline="true"
+                multiline={true}
                 rows={4}
                 sx={{
                     color: "black",
@@ -69,7 +69,7 @@ export default function CreateNote({
                 type="text"
                 name="Content"
                 placeholder="Don't write I got your back jack."
-                value={newNote.content}
+                value={newNote.Content}
                 onChange={handleChange}
             />
             <br />
