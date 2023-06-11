@@ -30,14 +30,15 @@
 }
 
 .Footer {
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 3px;
     font-size: 12px;
     text-align: center;
+    font-style: italic;
     bottom: 0;
     left: 0;
     width: 100%;
-    margin-top: 30px;
+    margin-top: -30px;
     position: static;
     color: rgba(0, 0, 0, 0.5);
 }
@@ -146,4 +147,14 @@
     transition: all 200ms ease;
     opacity: 0;
     transform: scale(0.9);
+}
+
+.desc-text {
+    color: rgba(0, 0, 0, 0.5);
+    margin: auto;
+    max-width: 700px;
+    padding: 50px;
+    justify-content: center;
+    text-align: justify;
+    margin-top: -20px;
 }
