@@ -10,6 +10,7 @@ import {
     useMediaQuery,
 } from "@mui/material";
 import { Delete } from "@mui/icons-material";
+import { TransitionGroup } from "react-transition-group";
 
 export default function PrintNotes({
     NoteList,
@@ -17,24 +18,18 @@ export default function PrintNotes({
     setFirstLaunch,
     updateNoteList,
 }) {
-    const [transition, setTransition] = useState(true);
-
     const isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
 
     function DeleteNotes(key) {
-        setTransition(false);
-
-        setTimeout(() => {
-            updateNoteList((NoteList) => {
-                return NoteList.filter((note, index) => {
-                    return index != key;
-                });
+        updateNoteList((NoteList) => {
+            return NoteList.filter((note, index) => {
+                return index != key;
             });
-            setTransition(true);
-            if (NoteList.length < 2) {
-                setFirstLaunch(true);
-            }
-        }, 200);
+        });
+
+        if (NoteList.length < 2) {
+            setFirstLaunch(true);
+        }
     }
 
     const CustomNote = styled(Paper)(({ theme }) => ({
@@ -76,30 +71,32 @@ export default function PrintNotes({
             alignItems="center"
             padding="20px 50px 20px 50px"
         >
-            {NoteList.map((note, index) => (
-                <Grow in={transition} key={index}>
-                    <CustomNote elevation={2} component={Stack} spacing={1}>
-                        <Typography variant="h6" gutterBottom noWrap>
-                            {note.Title}
-                        </Typography>
-                        <Divider flexItem />
-                        <Typography
-                            variant="body1"
-                            sx={{ wordBreak: "break-word" }}
-                        >
-                            {note.Content}
-                        </Typography>
+            <TransitionGroup component={null}>
+                {NoteList.map((note, index) => (
+                    <Grow key={index}>
+                        <CustomNote elevation={2} component={Stack} spacing={1}>
+                            <Typography variant="h6" gutterBottom noWrap>
+                                {note.Title}
+                            </Typography>
+                            <Divider flexItem />
+                            <Typography
+                                variant="body1"
+                                sx={{ wordBreak: "break-word" }}
+                            >
+                                {note.Content}
+                            </Typography>
 
-                        <DeleteButton
-                            onClick={() => {
-                                DeleteNotes(index);
-                            }}
-                        >
-                            <Delete /> Delete
-                        </DeleteButton>
-                    </CustomNote>
-                </Grow>
-            ))}
+                            <DeleteButton
+                                onClick={() => {
+                                    DeleteNotes(index);
+                                }}
+                            >
+                                <Delete /> Delete
+                            </DeleteButton>
+                        </CustomNote>
+                    </Grow>
+                ))}
+            </TransitionGroup>
         </Stack>
     );
 }
