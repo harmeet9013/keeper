@@ -1,13 +1,11 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
 import { createTheme } from "@mui/material";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
 export const theme = createTheme({
-    components:{
+    components: {
         MuiTextField: {
             styleOverrides: {
                 root: {
@@ -16,9 +14,9 @@ export const theme = createTheme({
                     letterSpacing: "2px",
                     fontWeight: "600",
                     width: "350px",
-                    borderRadius: "10px"
-                }
-            }
-        }
+                    borderRadius: "10px",
+                },
+            },
+        },
     },
-})
+});

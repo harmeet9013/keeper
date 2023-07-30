@@ -1,81 +1,114 @@
-import "./components.css";
 import { useState } from "react";
-import AddIcon from "@mui/icons-material/Add";
-import TextField from "@mui/material/TextField";
+import {
+    Button,
+    Divider,
+    Paper,
+    Typography,
+    styled,
+    useMediaQuery,
+    TextField,
+    Box,
+    Stack,
+} from "@mui/material";
+import { Add } from "@mui/icons-material";
+
+let isMobile;
+
+const MyStack = styled(Stack)(({ theme }) => ({
+    backgroundColor: theme.palette.background.createNote,
+    padding: isMobile ? "20px" : "30px 50px",
+    width: isMobile ? "90%" : "30rem",
+    borderRadius: "15px",
+    gap: "20px",
+    transition: "all 0.2s ease-in",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    cursor: "default",
+    marginTop: "2rem",
+}));
+
+const AddButton = styled(Button)(({ theme }) => ({
+    padding: "8px 16px",
+    fontWeight: "600",
+    fontSize: "18px",
+    borderRadius: "15px",
+    alignItems: "center",
+    backgroundColor: theme.palette.background.default,
+    color: theme.palette.text.primary,
+    transition: "all 0.2s ease-in",
+    border: `1px solid ${theme.palette.text.disabled}`,
+    "&:hover": {
+        backgroundColor: theme.palette.accent.primary,
+    },
+}));
 
 export default function CreateNote({
     NoteList,
     updateNoteList,
     setFirstLaunch,
+    setDialogInputs,
 }) {
+    isMobile = useMediaQuery((theme) => theme.breakpoints.down("md"));
+
     const [newNote, createNewNote] = useState({
         Title: "",
         Content: "",
     });
 
-    function handleChange(event) {
+    const handleChange = (event) => {
         const { name, value } = event.target;
-        createNewNote({ ...newNote, [name]: value });
-    }
+        createNewNote((prevInputs) => {
+            return { ...prevInputs, [name]: value };
+        });
+    };
 
-    function handleClick() {
+    const handleSubmit = () => {
         if (newNote.Title !== "" && newNote.Content !== "") {
             updateNoteList([...NoteList, newNote]);
             setFirstLaunch(false);
         } else {
-            alert("Please enter some text in both fields.");
+            setDialogInputs({
+                open: true,
+                title: "Invalid Inputs",
+                content: "Please enter some text in both fields.",
+            });
         }
-    }
+    };
 
     return (
-        <div className="CreateNote">
-            <h1 style={{ color: "rgba(255,255,255,0.8)" }}>
-                Create a New Note
-            </h1>
+        <MyStack spacing={0} component={Paper} elevation={4}>
+            <Typography variant={isMobile ? "h5" : "h4"}>
+                <strong>Create a New Note</strong>
+            </Typography>
             <TextField
-                label="Note Title"
-                variant="filled"
-                sx={{
-                    color: "black",
-                    backgroundColor: "white",
-                    borderRadius: "10px",
-                    width: "350px",
-                    input: {
-                        letterSpacing: "2px",
-                        fontWeight: "600",
-                    },
-                }}
-                margin="dense"
+                label="Title"
+                variant="outlined"
                 type="text"
+                fullWidth
+                color="textField"
                 name="Title"
                 placeholder="An interesting title"
                 value={newNote.Title}
                 onChange={handleChange}
             />
             <TextField
-                label="Note Content"
-                variant="filled"
-                margin="normal"
-                multiline={true}
-                rows={4}
-                sx={{
-                    color: "black",
-                    backgroundColor: "white",
-                    letterSpacing: "1px",
-                    fontWeight: "500",
-                    width: "350px",
-                    borderRadius: "10px",
-                }}
+                label="Content"
+                variant="outlined"
+                color="textField"
                 type="text"
+                fullWidth
+                multiline
+                minRows={4}
                 name="Content"
                 placeholder="Don't write I got your back jack."
                 value={newNote.Content}
                 onChange={handleChange}
             />
-            <br />
-            <button onClick={handleClick}>
-                <AddIcon />
-            </button>
-        </div>
+            <Divider flexItem />
+            <AddButton onClick={handleSubmit} startIcon={<Add />}>
+                Save Note
+            </AddButton>
+        </MyStack>
     );
 }
